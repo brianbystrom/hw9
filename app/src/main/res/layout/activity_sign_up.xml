@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.brianbystrom.hw09.SignUpActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:id="@+id/fNameET"
+        android:hint="First Name"
+        android:text="Brian" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/lNameET"
+        android:layout_below="@+id/fNameET"
+        android:layout_alignLeft="@+id/fNameET"
+        android:layout_alignStart="@+id/fNameET"
+        android:hint="Last Name"
+        android:text="Bystrom" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/emailET"
+        android:layout_below="@+id/lNameET"
+        android:layout_alignLeft="@+id/lNameET"
+        android:layout_alignStart="@+id/lNameET"
+        android:hint="Email"
+        android:text="a@gmail.com" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/passwordET"
+        android:layout_below="@+id/emailET"
+        android:layout_alignLeft="@+id/emailET"
+        android:layout_alignStart="@+id/emailET"
+        android:hint="Password"
+        android:text="password" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/passwordET"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cPasswordET"
+        android:hint="Confirm Password"
+        android:text="password" />
+
+    <Button
+        android:text="@string/signUpBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUpBTN"
+        android:layout_below="@+id/cPasswordET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+</RelativeLayout>

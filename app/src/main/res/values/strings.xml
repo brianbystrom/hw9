@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HW09</string>
+    <string name="signInBTN">Sign In</string>
+    <string name="signUpBTN">Sign Up</string>
+    <string name="profileMI">Profile</string>
+    <string name="saveBTN">Save</string>
+    <string name="cancelBTN">Cancel</string>
+    <string name="friendsMI">Friends</string>
+    <string name="findBTN">Find Friends</string>
+    <array name="gender">
+        <item name="" value="">Please select one...</item>
+        <item name="Male" value="Male">Male</item>
+        <item name="Female" value="Female">Female</item>
+    </array>
+</resources>
