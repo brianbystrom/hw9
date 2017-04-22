@@ -38,8 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="48dp"
         android:layout_marginEnd="48dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorPrimaryWhite"
         android:id="@+id/saveBTN"
         android:layout_alignBaseline="@+id/cancelBTN"
         android:layout_alignBottom="@+id/cancelBTN"
@@ -69,8 +67,6 @@
     <Button
         android:text="@string/cancelBTN"
         android:layout_width="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorPrimaryWhite"
         android:layout_height="wrap_content"
         android:layout_marginLeft="43dp"
         android:layout_marginStart="43dp"

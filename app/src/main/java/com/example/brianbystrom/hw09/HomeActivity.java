@@ -1,22 +1,18 @@
 package com.example.brianbystrom.hw09;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,40 +26,38 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "DEMO2";
     private EditText fNameET, lNameET, emailET, passwordET, cPasswordET;
     private TextView welcomeTV;
-    private Button editBTN;
+    private Button signUpBTN, createTripBTN;
     private String fName, lName, email, password, cPassword;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase database;
-    private DatabaseReference myRef;
+    private DatabaseReference myRef, userRef;
     private FirebaseUser user;
     private User currentUser = new User();
     private String uid;
-
+    private RecyclerView tripsRV;
+    private ArrayList<Trip> tripList = new ArrayList<Trip>();
+    private int d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         welcomeTV = (TextView) findViewById(R.id.welcomeTV);
+        createTripBTN = (Button) findViewById(R.id.createTripBTN);
+
+        tripsRV = (RecyclerView) findViewById(R.id.tripsRV);
+
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        editBTN =(Button) findViewById(R.id.edit_prof_btn);
-        editBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),EditProfileActivity.class);
-                i.putExtra("UID",user.getUid());
-                startActivity(i);
-            }
-        });
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -72,31 +66,69 @@ public class HomeActivity extends AppCompatActivity {
                     // User is signed in
                     uid = user.getUid();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    //welcomeTV.setText("Welcome back " + user.getDisplayName());
+                    welcomeTV.setText("Welcome back " + user.getDisplayName());
                     myRef = database.getReference("users").child(user.getUid());
+
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
-//                                Log.d("demo", snapshot.getValue(User.class).toString());
-                                Log.d(TAG, snapshot.getValue(User.class).getfName());
+                            //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
+
                                 currentUser.setfName(snapshot.getValue(User.class).getfName().toString());
                                 currentUser.setlName(snapshot.getValue(User.class).getlName().toString());
                                 currentUser.setGender(snapshot.getValue(User.class).getGender().toString());
                                 currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
-                                welcomeTV.setText("Welcome back " + currentUser.getfName() + " " + currentUser.getlName());
-                            }
+                                currentUser.setFriendsUID((ArrayList<String>) snapshot.getValue(User.class).getFriendsUID());
+                                currentUser.setTripsID((ArrayList<String>) snapshot.getValue(User.class).getTripsID());
+                                welcomeTV.setText("Welcome back " + user.getDisplayName());
+
+                                //Log.d("LENGTH", currentUser.getTripsID().get(1) + "");
+
+                            userRef = database.getReference("users").child(user.getUid());
+
+                            userRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot snapshot) {
+                                    //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
+
+                                    currentUser.setfName(snapshot.getValue(User.class).getfName().toString());
+                                    currentUser.setlName(snapshot.getValue(User.class).getlName().toString());
+                                    currentUser.setGender(snapshot.getValue(User.class).getGender().toString());
+                                    currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
+                                    currentUser.setFriendsUID((ArrayList<String>) snapshot.getValue(User.class).getFriendsUID());
+                                    currentUser.setTripsID((ArrayList<String>) snapshot.getValue(User.class).getTripsID());
+                                    welcomeTV.setText("Welcome back " + user.getDisplayName());
+
+                                    //Log.d("LENGTH", currentUser.getTripsID().get(1) + "");
 
 
 
+                                    getTrips(currentUser);
 
+                                    //}
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+
+                            });
+
+                                //fillRV(currentUser);
+
+                            //}
                         }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
                         }
+
                     });
+
+
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -105,13 +137,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
 
+        createTripBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, CreateTripActivity.class));
+            }
+        });
+
 
 
     }
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -150,4 +185,94 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public void fillRV(final ArrayList<Trip> t) {
+        Log.d("T SIZE", t.size() + "");
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.VERTICAL, false);
+        TripAdapter mAdapter = new TripAdapter(t, HomeActivity.this);
+        mAdapter.notifyDataSetChanged();
+        tripsRV.setAdapter(mAdapter);
+        tripsRV.setLayoutManager(mLayoutManager);
+        tripsRV.setHasFixedSize(true);
+
+        ItemClickSupport.addTo(tripsRV).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Trip trip = t.get(position);
+
+                //MyAdapter.aTask.cancel(true);
+
+                Intent toTripActivity = new Intent(HomeActivity.this, TripActivity.class);
+                toTripActivity.putExtra("TRIP ID", trip.gettID());
+                Log.d("TRIP ID", trip.gettID() + "");
+                startActivity(toTripActivity);
+            }
+        });
+    }
+
+    public void getTrips(final User user) {
+
+        final int c = user.getTripsID().size();
+
+        if(c > 1) {
+
+
+
+        for (int i = 0; i < user.getTripsID().size(); i++) {
+
+            d = i;
+
+            if (!user.getTripsID().get(i).toString().equals("DEBUG")) {
+                myRef = database.getReference("trips").child(user.getTripsID().get(i).toString());
+
+                Log.d("TRIP ID", user.getTripsID().get(i).toString());
+                myRef.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
+                        Trip trip = new Trip();
+                        trip.setTitle(snapshot.getValue(Trip.class).getTitle().toString());
+                        trip.setLocation(snapshot.getValue(Trip.class).getLocation().toString());
+                        trip.setImage(snapshot.getValue(Trip.class).getImage().toString());
+                        trip.setuID("DEBUG");
+                        trip.settID(snapshot.getValue(Trip.class).gettID().toString());
+
+                        boolean add = true;
+
+                        for (int i = 0; i < tripList.size(); i++) {
+                            if (tripList.get(i).gettID().toString().equals(trip.gettID().toString())) {
+                                add = false;
+                            }
+                        }
+
+                        if (add) {
+                            tripList.add(trip);
+                        }
+
+                        Log.d("SIZE TL", tripList.size() + "");
+
+                        Log.d("C | D", c + "|" + d);
+                        if (d == c - 1) {
+                            Log.d("PRE FILL", tripList.size() + "");
+                            fillRV(tripList);
+                        }
+
+
+                        //}
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
+            }
+
+        }
+        }
+
+
+
+    }
 }

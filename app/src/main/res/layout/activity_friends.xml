@@ -10,6 +10,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.brianbystrom.hw09.FriendsActivity">
 
+    <Button
+        android:text="@string/findBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="53dp"
+        android:layout_marginEnd="53dp"
+        android:id="@+id/findBTN" />
+
+    <Button
+        android:text="@string/cancelBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/findBTN"
+        android:layout_toLeftOf="@+id/findBTN"
+        android:layout_toStartOf="@+id/findBTN"
+        android:layout_marginRight="47dp"
+        android:layout_marginEnd="47dp"
+        android:id="@+id/cancelBTN" />
+
     <TextView
         android:text="Found 0 friends "
         android:layout_width="wrap_content"
@@ -19,50 +41,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_below="@+id/freindsCount"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/a"
+        android:id="@+id/friendsRV"
+        android:layout_height="400dp"
         android:layout_above="@+id/findBTN"
-        android:layout_height="350dp" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/a"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:text="@string/findBTN"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorPrimaryWhite"
-            android:id="@+id/findBTN"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_width="match_parent" />
-
-        <Button
-            android:text="Button"
-            android:id="@+id/button2"
-            android:layout_height="20dp"
-            android:layout_width="fill_parent"
-            android:visibility="invisible" />
-
-        <Button
-            android:text="@string/cancelBTN"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/findBTN"
-            android:layout_toLeftOf="@+id/findBTN"
-            android:layout_toStartOf="@+id/findBTN"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorPrimaryWhite"
-            android:id="@+id/cancelBTN" />
-    </LinearLayout>
-
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
