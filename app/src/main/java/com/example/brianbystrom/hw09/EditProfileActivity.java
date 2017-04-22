@@ -5,8 +5,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,8 +42,6 @@ public class EditProfileActivity extends AppCompatActivity {
     private ArrayList<User> userData;
     private final User currentUser = new User();
     private User userProfile = new User();
-    private ArrayList<String> friends, trips = new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,26 +101,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
 
-        profileUrlET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-                    Picasso.with(EditProfileActivity.this).load(s.toString()).into(profileUrlIV);
-                } catch (RuntimeException e) {
-                    Toast.makeText(EditProfileActivity.this, "Invalid link for location image.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         cancelBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +124,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(fName.equals("") || lName.equals("") || gender.equals("") || profileURL.equals("")) {
                     Toast.makeText(EditProfileActivity.this, "Please make sure each field is filled out.", Toast.LENGTH_SHORT).show();
                 } else {
-                    User userSave = new User(fName, lName, gender, profileURL, currentUser.getFriendsUID(), currentUser.getTripsID());
+                    User userSave = new User(fName, lName, gender, profileURL, null);
                     myRef = database.getReference("users").child(user.getUid());
                     myRef.setValue(userSave);
 
@@ -209,8 +186,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     currentUser.setlName(snapshot.getValue(User.class).getlName().toString());
                     currentUser.setGender(snapshot.getValue(User.class).getGender().toString());
                     currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
-                    currentUser.setFriendsUID(snapshot.getValue(User.class).getFriendsUID());
-                    currentUser.setTripsID((snapshot.getValue(User.class).getTripsID()));
 
 
 

@@ -11,8 +11,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/addBtn"
         android:layout_below="@+id/profileUrlIV"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimaryWhite"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:color/transparent"
+        android:id="@+id/profileUrlIV"
+        android:src="@mipmap/default_prof"
+        android:background="@drawable/norm"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -22,20 +36,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/nameTV"
         android:layout_weight="0.89"
-        android:layout_marginTop="36dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@android:color/transparent"
-        android:id="@+id/profileUrlIV"
-        android:src="@mipmap/default_prof"
-        android:background="@mipmap/default_prof"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="18dp" />
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_alignTop="@+id/profileUrlIV"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/profileUrlIV"
+        android:layout_toStartOf="@+id/profileUrlIV" />
 
 </RelativeLayout>

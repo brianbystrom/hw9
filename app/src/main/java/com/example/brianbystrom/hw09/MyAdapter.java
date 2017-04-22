@@ -1,5 +1,6 @@
 package com.example.brianbystrom.hw09;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -22,14 +23,14 @@ import java.util.ArrayList;
 
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    public FriendsActivity activity;
+    public Context c;
 
     private ArrayList<User> mDataset = new ArrayList<User>();
 
 
-    public MyAdapter(ArrayList<User> mDataset, FriendsActivity activity) {
+    public MyAdapter(ArrayList<User> mDataset, Context activity) {
         this.mDataset = mDataset;
-        this.activity = activity;
+        this.c = activity;
 
     }
 

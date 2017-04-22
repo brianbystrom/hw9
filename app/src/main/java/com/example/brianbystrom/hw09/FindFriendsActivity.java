@@ -43,15 +43,18 @@ public class FindFriendsActivity extends AppCompatActivity {
     private DatabaseReference loggedUserRef;
     private FirebaseUser user;
     private CustomArrayAdapter customArrayAdapter;
-    char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVEWXYZ".toCharArray();
+    char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVEWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
     ArrayList<User> allUsers;
+    private String myname;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_friends);
         find_friends = (ListView) findViewById(R.id.findFriends);
         mAuth = FirebaseAuth.getInstance();
-
+        if(getIntent().getExtras()!=null){
+         myname = getIntent().getStringExtra("MYNAME");
+        }
         database = FirebaseDatabase.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -69,20 +72,20 @@ public class FindFriendsActivity extends AppCompatActivity {
                     //myRef.child("friends").orderByChild("user").equalTo(user.getUid());
                     //myRef.child("all");
                     Log.d("USER ID", user.getUid() + "");
-                    customArrayAdapter = new CustomArrayAdapter(allUsers,getApplicationContext(),database,user.getUid());
+                    customArrayAdapter = new CustomArrayAdapter(allUsers,getApplication(),database,user.getUid());
                     find_friends.setAdapter(customArrayAdapter);
                     //Even though the Log has a reference to a friend object, i can't seem to pull information from it like I was when
                     //Pulling the user in the EditProfileActivity
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            Log.d("maskd ",snapshot.child("all").getChildrenCount()+"");
                             allUsers.clear();
                             customArrayAdapter.notifyDataSetChanged();
-                                for(int x = 0; x < 26; x++){
-                                    Log.d("test "+alphabet[x],snapshot.child("all").child(alphabet[x]+"").getValue()+"");
-                                    if(snapshot.child("all").child(alphabet[x]+"").exists()) {
+                                for(int x = 0; x < alphabet.length; x++){
+                                    //Log.d("test ",alphabet.length+"");
+                                    Log.d("test ","if "+snapshot.child("all").child(alphabet[x]+"").getKey() +" doesnt equal "+myname.charAt(0)+"");
 
+                                    if(snapshot.child("all").child(alphabet[x]+"").exists() && !snapshot.child("all").child(alphabet[x]+"").getKey().equals(myname.charAt(0)+"")) {
                                         User u = new User();
                                         u.setfName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("fName").getValue(String.class));
                                         u.setlName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("lName").getValue(String.class));
@@ -121,6 +124,10 @@ public class FindFriendsActivity extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    public void end(){
+        finish();
+    }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -136,7 +143,7 @@ public class FindFriendsActivity extends AppCompatActivity {
         Button add;
         ImageView img;
         FirebaseDatabase l;
-        String id;
+String id;
         CustomArrayAdapter(ArrayList<User> dataSet, Context c, FirebaseDatabase lU, String Uid){
             super(c,R.layout.friend,dataSet);
             mDataset = dataSet;
@@ -170,7 +177,7 @@ public class FindFriendsActivity extends AppCompatActivity {
                             Log.d("zone",dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount()+"");
                             temp.add(dataSnapshot.child("all").child(mDataset.get(position).getfName().charAt(0)+"").getValue(String.class));
                             l.getReference().child("users").child(id).child("friendsUID").setValue(temp);
-
+//                            ((FindFriendsActivity) c).end();
                         }
 
                         @Override
@@ -180,8 +187,10 @@ public class FindFriendsActivity extends AppCompatActivity {
                     });
 
                 }
+
             });
             img = (ImageView) convertView.findViewById(R.id.profileUrlIV);
+            img.setImageResource(R.drawable.norm);
             name.setText(mDataset.get(position).getfName() +" " +mDataset.get(position).getlName());
             add.setText("Add");
             return convertView;

@@ -11,25 +11,16 @@ import java.util.UUID;
 public class User {
 
     String fName, lName, gender, profileURL;
-    ArrayList<String> friendsUID, tripsID;
+    ArrayList<String> friendsUID;
 
     
 
-    public User(String fName, String lName, String gender, String profileURL, ArrayList<String> f, ArrayList<String> t) {
+    public User(String fName, String lName, String gender, String profileURL, ArrayList<String> f) {
         this.fName = fName;
         this.lName = lName;
         this.gender = gender;
         this.profileURL = profileURL;
         this.friendsUID = f;
-        this.tripsID = t;
-    }
-
-    public ArrayList<String> getTripsID() {
-        return tripsID;
-    }
-
-    public void setTripsID(ArrayList<String> tripsID) {
-        this.tripsID = tripsID;
     }
 
     public ArrayList<String> getFriendsUID() {
