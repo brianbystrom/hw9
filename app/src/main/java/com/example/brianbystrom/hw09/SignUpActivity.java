@@ -18,16 +18,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private static final String TAG = "DEMO";
-    private EditText fNameET, lNameET, emailET, passwordET, cPasswordET;
+    private EditText fNameET, lNameET, emailET, passwordET, cPasswordET, genderET;;
     private Button signUpBTN;
-    private String fName, lName, email, password, cPassword;
+    private String fName, lName, email, password, cPassword, gender;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private DatabaseReference myRefAllUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         emailET = (EditText) findViewById(R.id.emailET);
         passwordET = (EditText) findViewById(R.id.passwordET);
         cPasswordET = (EditText) findViewById(R.id.cPasswordET);
-
+        genderET = (EditText) findViewById(R.id.genderEt);
         signUpBTN = (Button) findViewById(R.id.signUpBTN);
 
         database = FirebaseDatabase.getInstance();
@@ -71,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
                 email = emailET.getText().toString();
                 password = passwordET.getText().toString();
                 cPassword = cPasswordET.getText().toString();
+                gender = genderET.getText().toString();
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -85,13 +90,22 @@ public class SignUpActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    User user = new User(fName, lName, null, "http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg");
+
+                                    ArrayList<String> friends = new ArrayList<String>();
+                                    ArrayList<String> trips = new ArrayList<String>();
+                                    trips.add("DEBUG");
+                                    friends.add(task.getResult().getUser().getUid());
+                                    User user = new User(fName, lName, gender, "http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg", friends, trips);
 
                                     String userID = mAuth.getCurrentUser().getUid();
                                     Log.d(TAG, userID);
 
                                     myRef = database.getReference("users").child(userID);
+                                    myRefAllUsers = database.getReference("all");
+
                                     myRef.setValue(user);
+                                    myRefAllUsers.child(fName.charAt(0)+"").setValue(task.getResult().getUser().getUid());
+
                                     startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
 
                                     Toast.makeText(SignUpActivity.this, "Signup successful", Toast.LENGTH_SHORT).show();

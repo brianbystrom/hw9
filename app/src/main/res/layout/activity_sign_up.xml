@@ -74,7 +74,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/signUpBTN"
+        android:layout_marginTop="63dp"
         android:layout_below="@+id/cPasswordET"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Gender"
+        android:text="Male"
+        android:ems="10"
+        android:layout_below="@+id/cPasswordET"
+        android:layout_alignRight="@+id/cPasswordET"
+        android:layout_alignEnd="@+id/cPasswordET"
+        android:id="@+id/genderEt" />
 </RelativeLayout>

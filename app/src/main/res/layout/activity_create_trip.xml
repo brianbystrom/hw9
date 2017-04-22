@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_trip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.brianbystrom.hw09.CreateTripActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/titleET"
+        android:hint="Title" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/titleET"
+        android:layout_alignRight="@+id/titleET"
+        android:layout_alignEnd="@+id/titleET"
+        android:id="@+id/locationET"
+        android:hint="Location" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/locationET"
+        android:layout_alignLeft="@+id/locationET"
+        android:layout_alignStart="@+id/locationET"
+        android:id="@+id/imageET"
+        android:hint="Loation Image URL" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@color/common_google_signin_btn_text_light_disabled"
+        android:layout_marginTop="24dp"
+        android:id="@+id/userIV"
+        android:layout_below="@+id/imageET"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="250dp" />
+
+    <Button
+        android:text="@string/cancelBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:id="@+id/cancelBTN" />
+
+    <Button
+        android:text="@string/saveBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="53dp"
+        android:layout_marginEnd="53dp"
+        android:id="@+id/saveBTN"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
