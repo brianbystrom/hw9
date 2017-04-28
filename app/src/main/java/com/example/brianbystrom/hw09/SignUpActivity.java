@@ -92,10 +92,10 @@ public class SignUpActivity extends AppCompatActivity {
                                 } else {
 
                                     ArrayList<String> friends = new ArrayList<String>();
-                                    ArrayList<String> trips = new ArrayList<String>();
-                                    trips.add("DEBUG");
                                     friends.add(task.getResult().getUser().getUid());
-                                    User user = new User(fName, lName, gender, "http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg", friends, trips);
+                                    ArrayList<String> trips = new ArrayList<String>();
+                                    trips.add("INIT");
+                                    User user = new User(fName, lName, gender, "http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg", friends, trips, task.getResult().getUser().getUid());
 
                                     String userID = mAuth.getCurrentUser().getUid();
                                     Log.d(TAG, userID);

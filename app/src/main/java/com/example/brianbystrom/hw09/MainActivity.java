@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                             .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                                    Log.d("mask off",task.getResult().getUser().getUid() +"dd");
+  //                                  Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+//                                    Log.d("mask off",task.getResult().getUser().getUid() +"dd");
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.

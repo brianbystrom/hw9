@@ -9,6 +9,7 @@
     <string name="findBTN">Find Friends</string>
     <string name="createTripBTN">Create new trip</string>
     <string name="sendMsgBTN">Send</string>
+    <string name="reqBTN">View Friend Requets</string>
     <array name="gender">
         <item name="" value="">Please select one...</item>
         <item name="Male" value="Male">Male</item>

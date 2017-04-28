@@ -6,6 +6,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,26 +38,37 @@ public class FindFriendsActivity extends AppCompatActivity {
 
     private static final String TAG = "DEMO";
     private FirebaseAuth mAuth;
+    private String uID;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase database;
-    private DatabaseReference myRef;
+    private DatabaseReference myRef, myRef2, myRef3;
     private DatabaseReference loggedUserRef;
     private FirebaseUser user;
-    private CustomArrayAdapter customArrayAdapter;
-    char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVEWXYZ".toCharArray();
-    ArrayList<User> allUsers;
+    //private CustomArrayAdapter customArrayAdapter;
+    private RecyclerView findFriendsRV;
+    char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVEWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
+    ArrayList<User> allUsers = new ArrayList<User>();
+    ArrayList<String> allRequests = new ArrayList<String>();
+    private String myname;
+    private ValueEventListener listener;
+    private User currentUser = new User();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_friends);
-        find_friends = (ListView) findViewById(R.id.findFriends);
-        mAuth = FirebaseAuth.getInstance();
+        //find_friends = (ListView) findViewById(R.id.findFriends);
+        findFriendsRV = (RecyclerView) findViewById(R.id.findFriendsRV);
 
+        mAuth = FirebaseAuth.getInstance();
+        if(getIntent().getExtras()!=null){
+         myname = getIntent().getStringExtra("MYNAME");
+        }
         database = FirebaseDatabase.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
+                uID = user.getUid();
                 Log.d("usera",user+"");
                 if (user != null) {
                     // User is signed in
@@ -64,25 +76,106 @@ public class FindFriendsActivity extends AppCompatActivity {
                     myRef = database.getReference();
                     loggedUserRef = database.getReference();
                     Log.d("mopa", myRef.toString());
-                   allUsers = new ArrayList<User>();
+                    allUsers = new ArrayList<User>();
 
-                    //myRef.child("friends").orderByChild("user").equalTo(user.getUid());
-                    //myRef.child("all");
-                    Log.d("USER ID", user.getUid() + "");
-                    customArrayAdapter = new CustomArrayAdapter(allUsers,getApplicationContext(),database,user.getUid());
-                    find_friends.setAdapter(customArrayAdapter);
-                    //Even though the Log has a reference to a friend object, i can't seem to pull information from it like I was when
-                    //Pulling the user in the EditProfileActivity
-                    myRef.addValueEventListener(new ValueEventListener() {
+                    myRef3 = database.getReference("users").child(user.getUid());
+
+                    myRef3.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            currentUser.setfName(dataSnapshot.getValue(User.class).getfName().toString());
+                            currentUser.setlName(dataSnapshot.getValue(User.class).getlName().toString());
+                            currentUser.setGender(dataSnapshot.getValue(User.class).getGender().toString());
+                            currentUser.setProfileURL(dataSnapshot.getValue(User.class).getProfileURL().toString());
+                            currentUser.setFriendsUID(dataSnapshot.getValue(User.class).getFriendsUID());
+                            currentUser.setTripsID(dataSnapshot.getValue(User.class).getTripsID());
+                            currentUser.setKey(dataSnapshot.getValue(User.class).getKey());
+
+                            myRef2 = database.getReference("requests");
+
+                            myRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    //for (com.google.firebase.database.DataSnapshot s : snapshot.getChildren()) {
+                                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                                    for(DataSnapshot child: children) {
+                                        Request request = child.getValue(Request.class);
+                                        Log.d("COMPARE", user.getUid() + " | " + request.getuID());
+                                        if(user.getUid().equals(request.getuID())) {
+                                            allRequests.add(request.getuID());
+                                        }
+                                    }
+
+
+
+
+
+                                    //myRef.child("friends").orderByChild("user").equalTo(user.getUid());
+                                    //myRef.child("all");
+                                    Log.d("USER ID", user.getUid() + "");
+
+                                    //Even though the Log has a reference to a friend object, i can't seem to pull information from it like I was when
+                                    //Pulling the user in the EditProfileActivity
+
+                                    myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                                            for(DataSnapshot child: children) {
+                                                User user = child.getValue(User.class);
+                                                if(!allRequests.contains(user.getKey()) && !currentUser.getFriendsUID().contains(user.getKey())) {
+                                                    allUsers.add(user);
+                                                }
+                                            }
+
+                                            LinearLayoutManager mLayoutManager = new LinearLayoutManager(FindFriendsActivity.this, LinearLayoutManager.VERTICAL, false);
+                                            FindFriendsAdapter mAdapter = new FindFriendsAdapter(allUsers, FindFriendsActivity.this, uID);
+                                            //mAdapter.notifyDataSetChanged();
+                                            findFriendsRV.setAdapter(mAdapter);
+                                            findFriendsRV.setLayoutManager(mLayoutManager);
+                                            findFriendsRV.setHasFixedSize(true);
+
+
+                                            //customArrayAdapter = new CustomArrayAdapter(allUsers,getApplication(),database,user.getUid());
+                                            //find_friends.setAdapter(customArrayAdapter);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+
+                            });
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+            /*myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            Log.d("maskd ",snapshot.child("all").getChildrenCount()+"");
                             allUsers.clear();
                             customArrayAdapter.notifyDataSetChanged();
-                                for(int x = 0; x < 26; x++){
-                                    Log.d("test "+alphabet[x],snapshot.child("all").child(alphabet[x]+"").getValue()+"");
-                                    if(snapshot.child("all").child(alphabet[x]+"").exists()) {
+                                for(int x = 0; x < alphabet.length; x++){
+                                    //Log.d("test ",alphabet.length+"");
+                                    Log.d("test ","if "+snapshot.child("all").child(alphabet[x]+"").getKey() +" doesnt equal "+myname.charAt(0)+"");
 
+                                    if(snapshot.child("all").child(alphabet[x]+"").exists() && !snapshot.child("all").child(alphabet[x]+"").getKey().equals(myname.charAt(0)+"")) {
                                         User u = new User();
                                         u.setfName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("fName").getValue(String.class));
                                         u.setlName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("lName").getValue(String.class));
@@ -104,7 +197,7 @@ public class FindFriendsActivity extends AppCompatActivity {
 
                         }
 
-                    });
+                    });*/
                 } else {
                     // User is signed out
                     Log.d("faail", "onAuthStateChanged:signed_out");
@@ -121,6 +214,10 @@ public class FindFriendsActivity extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    public void end(){
+        finish();
+    }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -129,7 +226,7 @@ public class FindFriendsActivity extends AppCompatActivity {
         }
     }
 
-    public class CustomArrayAdapter extends ArrayAdapter<User>{
+    /*public class CustomArrayAdapter extends ArrayAdapter<User>{
         ArrayList<User> mDataset;
         Context c;
         TextView name;
@@ -170,7 +267,7 @@ public class FindFriendsActivity extends AppCompatActivity {
                             Log.d("zone",dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount()+"");
                             temp.add(dataSnapshot.child("all").child(mDataset.get(position).getfName().charAt(0)+"").getValue(String.class));
                             l.getReference().child("users").child(id).child("friendsUID").setValue(temp);
-
+//                            ((FindFriendsActivity) c).end();
                         }
 
                         @Override
@@ -180,8 +277,10 @@ public class FindFriendsActivity extends AppCompatActivity {
                     });
 
                 }
+
             });
             img = (ImageView) convertView.findViewById(R.id.profileUrlIV);
+            img.setImageResource(R.drawable.norm);
             name.setText(mDataset.get(position).getfName() +" " +mDataset.get(position).getlName());
             add.setText("Add");
             return convertView;
@@ -191,5 +290,5 @@ public class FindFriendsActivity extends AppCompatActivity {
         public int getCount() {
             return mDataset.size();
         }
-    }
+    }*/
 }

@@ -1,5 +1,8 @@
 package com.example.brianbystrom.hw09;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TripActivity extends AppCompatActivity {
 
@@ -31,10 +35,10 @@ public class TripActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase database;
-    private DatabaseReference myRef, tripRef;
+    private DatabaseReference myRef, tripRef, myRef2, myRef3;
     private FirebaseUser user;
     private TextView titleTV, locationTV;
-    private ImageView imageIV;
+    private ImageView imageIV, addIV;
     private RecyclerView chatRV;
     private Trip trip = new Trip();
     private User currentUser = new User();
@@ -42,6 +46,8 @@ public class TripActivity extends AppCompatActivity {
     private Button sendMsgBTN;
     private EditText msgET;
     private String tripID;
+    private ArrayList<User> friendsList = new ArrayList<User>();
+    private ArrayList<String> fList = new ArrayList<String>();
     ChatAdapter mAdapter;
 
     @Override
@@ -53,6 +59,7 @@ public class TripActivity extends AppCompatActivity {
         locationTV = (TextView) findViewById(R.id.locationTV);
 
         imageIV = (ImageView) findViewById(R.id.userIV);
+        addIV = (ImageView) findViewById(R.id.addIV);
 
         sendMsgBTN = (Button) findViewById(R.id.sendMsgBTN);
         msgET = (EditText) findViewById(R.id.msgET);
@@ -109,6 +116,57 @@ public class TripActivity extends AppCompatActivity {
                             }
 
                         });
+
+                        myRef2 = database.getReference("users").child(user.getUid());
+
+                        Log.d("UID", user.getUid() + "");
+
+                        myRef2.addValueEventListener(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
+
+                                fList = dataSnapshot.getValue(User.class).getFriendsUID();
+
+
+                                myRef3 = database.getReference("users");
+
+
+                                myRef3.addValueEventListener(new ValueEventListener() {
+
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
+
+                                        friendsList.clear();
+
+                                        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                                        for(DataSnapshot child: children) {
+                                            User user = child.getValue(User.class);
+                                            if(currentUser.getTripsID().contains(trip.gettID())) {
+                                                friendsList.add(user);
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        });
+
+
                     } else {
                         // User is signed out
                         Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -116,6 +174,40 @@ public class TripActivity extends AppCompatActivity {
                     // ...
                 }
             };
+
+            addIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    RecyclerView friendsRV = new RecyclerView(TripActivity.this);
+
+                    fList.removeAll(Collections.singleton(null));
+                    LinearLayoutManager mLayoutManager = new LinearLayoutManager(TripActivity.this, LinearLayoutManager.VERTICAL, false);
+                    AddFriendTripAdapter mAdapter = new AddFriendTripAdapter(fList, TripActivity.this, user.getUid());
+                    //mAdapter.notifyDataSetChanged();
+                    friendsRV.setAdapter(mAdapter);
+                    friendsRV.setLayoutManager(mLayoutManager);
+                    friendsRV.setHasFixedSize(true);
+
+
+                    /*AlertDialog dialog = new AlertDialog.Builder(TripActivity.this)
+                            .setTitle("Add friends to trip.")
+
+                            //.setMessage("Are you sure you want to delete this entry?")
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();*/
+                    Dialog dialog = new Dialog(TripActivity.this);
+                    dialog.setContentView(friendsRV);
+                    dialog.setTitle("Add friends to trip");
+                    //dialog.setMessage("Add friends to trip");
+                    dialog.show();
+                }
+            });
 
 
 

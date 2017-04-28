@@ -22,15 +22,6 @@
         android:textSize="18sp"
         android:textStyle="normal|bold" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@color/common_google_signin_btn_text_light_disabled"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/userIV" />
-
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -69,4 +60,22 @@
         android:layout_marginRight="14dp"
         android:layout_marginEnd="14dp"
         android:id="@+id/sendMsgBTN" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@color/common_google_signin_btn_text_light_disabled"
+        android:id="@+id/userIV"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/sendMsgBTN"
+        android:layout_alignStart="@+id/sendMsgBTN" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:id="@+id/addIV"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/userIV"
+        android:layout_toEndOf="@+id/userIV" />
 </RelativeLayout>

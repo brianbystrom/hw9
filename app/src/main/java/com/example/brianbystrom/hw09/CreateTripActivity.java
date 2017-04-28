@@ -82,6 +82,7 @@ public class CreateTripActivity extends AppCompatActivity {
                                 currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
                                 currentUser.setFriendsUID(snapshot.getValue(User.class).getFriendsUID());
                                 currentUser.setTripsID(snapshot.getValue(User.class).getTripsID());
+                                currentUser.setKey(snapshot.getValue(User.class).getKey());
 
 
 
