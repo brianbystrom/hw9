@@ -88,5 +88,5 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="12dp"
         android:layout_marginEnd="12dp"
-        android:id="@+id/profileUrlIV" />
+        android:id="@+id/imageIV" />
 </RelativeLayout>

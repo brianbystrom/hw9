@@ -22,8 +22,12 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".FriendsActivity"></activity>
-        <activity android:name=".FindFriendsActivity"></activity>
+        <activity android:name=".FriendsActivity" />
+        <activity android:name=".FindFriendsActivity" />
+        <activity android:name=".FriendRequestsActivity" />
+        <activity android:name=".CreateTripActivity" />
+        <activity android:name=".TripActivity" />
+        <activity android:name=".FriendsTripActivity"></activity>
     </application>
 
 </manifest>

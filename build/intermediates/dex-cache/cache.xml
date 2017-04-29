@@ -3,156 +3,282 @@
 
     <item
         is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.2.1_0143a4945ba019b23e96dd29baaa0496685f006c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0a843615f3b5fa3a080497709f5436696149a09">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.2.1_c349c30bf70ba31c2bb07b88a24546b6334b39c1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/brianbystrom/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_476258c20de5d5914cc0343cbe8b2111eade1651/classes.dex" />
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_476258c20de5d5914cc0343cbe8b2111eade1651/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.2.1_5dc4c4851c54a85f5e7ee04804b561de94817cf9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="95519720620b553f63afc789beba9ad582807f7c">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.3.1_bf8e87ed5671ce443752dcfedc72dfc7aaad701c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.3.1_822732642310c9b030b2611223b293f05627cfb8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecdd037b86348044e6de44c560f3b8ecf81def71">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_25d1d059d24c8a47eb469da1b4e67edd73aa6f55/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4b42a61cd5924f28e95894e859e6abe57847e2f3">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.2.1_320a9f9c1afbe66767fa32ed76176f9141434a59/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a7ffe939ffd830b5d4052f3c1c4c235923790ce">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.2.1_3cee1ca5e6d904305a0aabbbfca10e9890861bc5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.3.1_1fd678c34b9d16d34c5c3f510e8136d2eb46a604/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.3.1_ab82adf1bfafcdf5b507bd85d9a532716abb6b15/classes.dex" />
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.3.1_92a38f5a269e931590d5a51f77b2f13025d86bd9/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.2.1_119172579c3d9ffeb3687b08155dc9e00d19c6fb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0ab9ba23ca53bc71116c59b4fb74782021f08b9a">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c95a22922fa2ed2553e35e9a5e6784c886149a16/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.3.1_05a59a146d395bc776648114564be18329177ebc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.3.1_1bd71bdf62c35ea4f90ccf1ddb92cb90a666f537/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.3.1_57bf977e51142244cf4da32b881545f5f81da4d6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.2.1_22e5775f14aad9b0320ea356f5ec01ce48f135ad/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.2.1_4dbf115e00325817d6d9564c09ed12a643123dc9/classes.dex" />
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.2.1_9e6b3af121ae731fa243ac1a3868bcdfdf7c90dd/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.2.1_4a6d2f9c35f1edbdcb8ef950714502ae0fac8631/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.2.1_a12f9aab29c0ac395acfcd3f80a6142c1d2502e2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.3.1_cb34d67e6200a1faa08630b7045bd28ec7e8cae7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.3.1_43ff2ca9671b0557cb89f1f634ee1b6b0bba72fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.2.1_872d3b0cf35aee5e70a4110923720f4e91beb8d5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.3.1_44fa2758316b52f80ed2593ca506c989b427c88d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.3.1_5e4a5508ad84af647db4a19dbbabd70fae113fa5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0a843615f3b5fa3a080497709f5436696149a09">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.2.1_f68571af2db01b6d235a5cc791049d3e8b6ebcd8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.3.1_d2fbfcd1e2737a56674db4178f308e1b8a012b69/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="888983f51cf34f57a93ff16832552f2f15937212">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.2.1_e977b549a0a05c46b89db62a530ae0b9e8dee0ca/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.3.1_3f22930e22033a72096f5062baf56c88be0b6e0d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.3.1_750eb44ae7cb15618507e8d4511d0d37639dcde5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b42a61cd5924f28e95894e859e6abe57847e2f3">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.2.1_1774a59360cba184faa8687ef4825018117ac721/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="df4de8ba61097ad8770420a1043018e4ada00e15">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ac88dc9e1ef7586b6eb35117c7248ca732441b97/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.3.1_2a43a7edabf3a68c3d949482348c473bc1cf5652/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.3.1_37a0f8c24fc9a89136848789e75ed897db8e5d21/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f469e4056a7eee00bddca55ab4beb443e8a6a695">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_19ddaca02125ab93e0b362586355a89822d8ad65/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.3.1_ef5ed1116a1be142069c99bd379dc5f5ac2cd5a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="399f75732ff1ac159f9e73611536f1508bf18d3b">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.2.1_c39777c0622e82806789ee8a42a230400fd06e8c/classes.dex" />
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.2.1_391786ce07df8abe91c45d451ffd48edda1906a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.2.1_1ed6cefd8cec2a668805d9072dea63825fc546c5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.2.1_93a54d60a42e82dde6fde9d2dc0aba1f02ec3d20/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="399f75732ff1ac159f9e73611536f1508bf18d3b">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.2.1_9a2eacf9e3d401e5bcaad0028d6faadf91140340/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.3.1_829772d40ebfa951fc903cde59ea5216da34dac0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a7ffe939ffd830b5d4052f3c1c4c235923790ce">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.2.1_1a8d7ca01b58a0f485c1d711af7e99f191831e33/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a09c7b82378bda9a54cc68384969cb7fe49fcdbe">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ee5ad270d59b492f1206a787861b1b15b24aa609/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b42a61cd5924f28e95894e859e6abe57847e2f3">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.2.1_6bc2d9a55135bb143cb417dc0049632cb4efe5af/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -161,61 +287,142 @@
         optimize="true"
         revision="25.0.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_b2b71ae090c0cd05923ba4e044e917c4048f9423/classes.dex" />
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_b2b71ae090c0cd05923ba4e044e917c4048f9423/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.3.1_af7def0f7a1fb4e14d22e0a0760b8cc56dc23e12/classes.dex" />
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.3.1_de227255b1c20cf98fe0584f8fd85cd3c665c7fe/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.2.1_d8a4835a66e57a2cb947a14e873e05afedda6427/classes.dex" />
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.3.1_0f3a15ac9c5242714699fa87007040c439a12fb1/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d0a843615f3b5fa3a080497709f5436696149a09">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.2.1_e95cd9e3c2d368ad5ca56d003781a3b4ac339f1a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.3.1_6db9af1b9a428ed0b633324fd76418fedbf7f7c8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.3.1_62ca80af379f15e8e2b6a8b8089afb09be78f0b7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.1/jars/classes.jar"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="888983f51cf34f57a93ff16832552f2f15937212">
-        <dex dex="/Users/brianbystrom/Desktop/ITIS 4180/HW09/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.2.1_ff84f0d722c2ff835cb456c165ab1018b902d5e9/classes.dex" />
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.2.1_1130e019619b0042005757816b4279232ef8ee13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/.gradle/caches/modules-2/files-2.1/org.ocpsoft.prettytime/prettytime/4.0.1.Final/5537d74e2102a82fd937dd9b8a652e3b26026a7a/prettytime-4.0.1.Final.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5537d74e2102a82fd937dd9b8a652e3b26026a7a">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/prettytime-4.0.1.Final_50c94f659c47944e7afb9391fa342ea8cd8b2236/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.3.1_f8cede668aedebe3c41340da59b5f55b3d7c8876/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.2.1_98f231df7c351b6a5ffc06fbc3c343c8f4d92e34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.3.1_d3fc011db4c875c00010940b104c7acc8693ecaa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.2.1_8be90716d720220f7fa5465c87bf15c6c395dc94/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.3.1_82fd2ac415e6541b39dd3c328f3f7f31210ef79c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a7ffe939ffd830b5d4052f3c1c4c235923790ce">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.2.1_e9e81190928d21f36c6b20f1d39bba94a2cc5d97/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.2.1_bef55ee858f8c9c76782b17abfc2d7f805c2faf2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.3.1_897a759be48e22b1f11a397f52cb688b58467c82/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.3.1_5cc15c85d35fb92e52895ad8b8e1df666b0eb195/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/brianbystrom/Desktop/hw9/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.3.1_8ce0afb157c186d4c27e74725a1f827fc3da455d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a35cfab75132920348bfa95bcec612726d03d394">
+        <dex dex="/Users/brianbystrom/Downloads/hw9-master 3/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c52d761019bce36648a36f7cd67969baea254487/classes.dex" />
     </item>
 
 </items>

@@ -19,21 +19,32 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_below="@+id/freindsCount"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/a"
-        android:layout_above="@+id/findBTN"
-        android:layout_height="350dp" />
+        android:layout_height="300dp"
+        android:id="@+id/friendsRV"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/a"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_height="165dp">
+
+        <Button
+            android:text="@string/reqBTN"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorPrimaryWhite"
+            android:id="@+id/reqBTN"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent" />
 
         <Button
             android:text="@string/findBTN"
@@ -44,22 +55,18 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent" />
 
-        <Button
-            android:text="Button"
-            android:id="@+id/button2"
-            android:layout_height="20dp"
-            android:layout_width="fill_parent"
-            android:visibility="invisible" />
 
         <Button
             android:text="@string/cancelBTN"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/findBTN"
             android:layout_toLeftOf="@+id/findBTN"
             android:layout_toStartOf="@+id/findBTN"
+            android:layout_marginTop="5dp"
             android:background="@color/colorAccent"
             android:textColor="@color/colorPrimaryWhite"
             android:id="@+id/cancelBTN" />

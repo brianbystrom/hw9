@@ -1,20 +1,12 @@
 package com.example.brianbystrom.hw09;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             this.nameTV = (TextView) itemView.findViewById(R.id.nameTV);
-            this.profileUrlIV = (ImageView) itemView.findViewById(R.id.profileUrlIV);
+            this.profileUrlIV = (ImageView) itemView.findViewById(R.id.imageIV);
         }
 
     }
