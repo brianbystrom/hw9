@@ -74,7 +74,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         TextView tv = holder.titleTV;
         TextView tv2 = holder.locationTV;
         tv.setText(trip.getTitle().toString());
-        tv2.setText(trip.getLocation().toString());
+        tv2.setText(trip.getLocation().getName().toString());
 
         ImageView iv = holder.imageIV;
         Picasso.with(activity).load(trip.getImage().toString()).into(iv);

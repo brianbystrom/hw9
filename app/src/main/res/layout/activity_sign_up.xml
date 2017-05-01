@@ -15,24 +15,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:id="@+id/fNameET"
-        android:hint="First Name"
-        android:text="Brian" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/lNameET"
         android:layout_below="@+id/fNameET"
         android:layout_alignLeft="@+id/fNameET"
         android:layout_alignStart="@+id/fNameET"
-        android:hint="Last Name"
-        android:text="Bystrom" />
+        android:hint="Last Name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,8 +30,7 @@
         android:layout_below="@+id/lNameET"
         android:layout_alignLeft="@+id/lNameET"
         android:layout_alignStart="@+id/lNameET"
-        android:hint="Email"
-        android:text="a@gmail.com" />
+        android:hint="Email" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -55,8 +41,7 @@
         android:layout_below="@+id/emailET"
         android:layout_alignLeft="@+id/emailET"
         android:layout_alignStart="@+id/emailET"
-        android:hint="Password"
-        android:text="password" />
+        android:hint="Password" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -66,8 +51,7 @@
         android:layout_below="@+id/passwordET"
         android:layout_centerHorizontal="true"
         android:id="@+id/cPasswordET"
-        android:hint="Confirm Password"
-        android:text="password" />
+        android:hint="Confirm Password" />
 
     <Button
         android:text="@string/signUpBTN"
@@ -83,10 +67,32 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="Gender"
-        android:text="Male"
         android:ems="10"
         android:layout_below="@+id/cPasswordET"
         android:layout_alignRight="@+id/cPasswordET"
         android:layout_alignEnd="@+id/cPasswordET"
         android:id="@+id/genderEt" />
+
+    <TextView
+        android:text="@string/signupLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="32dp"
+        android:id="@+id/fNameET"
+        android:hint="First Name"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/cPasswordET"
+        android:layout_alignStart="@+id/cPasswordET" />
 </RelativeLayout>

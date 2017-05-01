@@ -31,17 +31,18 @@ public class AddFriendTripAdapter extends RecyclerView.Adapter<AddFriendTripAdap
     private User currentUser = new User();
     private User requestUser = new User();
     private User loggedInUser = new User();
-    private String uID;
+    private String uID, tripID;
     private ArrayList<User> userList = new ArrayList<User>();
     private ArrayList<String> fID = new ArrayList<String>();
     private ArrayList<String> fID2 = new ArrayList<String>();
+    private ArrayList<String> tID = new ArrayList<String>();
     //final ValueEventListener listener;
 
 
-    public AddFriendTripAdapter(ArrayList<String> mDataset, TripActivity activity, String uID) {
+    public AddFriendTripAdapter(ArrayList<String> mDataset, TripActivity activity, String tripID) {
         this.mDataset = mDataset;
         this.activity = activity;
-        this.uID = uID;
+        this.tripID = tripID;
         database = FirebaseDatabase.getInstance();
 
 
@@ -114,6 +115,12 @@ public class AddFriendTripAdapter extends RecyclerView.Adapter<AddFriendTripAdap
                     @Override
                     public void onClick(View v) {
                         mDataset.remove(position);
+
+                        tID = currentUser.getTripsID();
+                        tID.add(tripID);
+                        currentUser.setTripsID(tID);
+                        myRef.setValue(currentUser);
+
                         notifyDataSetChanged();
                     }
                 });

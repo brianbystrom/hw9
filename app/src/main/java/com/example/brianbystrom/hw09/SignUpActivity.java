@@ -101,10 +101,8 @@ public class SignUpActivity extends AppCompatActivity {
                                     Log.d(TAG, userID);
 
                                     myRef = database.getReference("users").child(userID);
-                                    myRefAllUsers = database.getReference("all");
 
                                     myRef.setValue(user);
-                                    myRefAllUsers.child(fName.charAt(0)+"").setValue(task.getResult().getUser().getUid());
 
                                     startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
 

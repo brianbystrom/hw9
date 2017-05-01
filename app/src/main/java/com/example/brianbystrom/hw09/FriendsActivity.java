@@ -65,10 +65,9 @@ public class FriendsActivity extends AppCompatActivity {
         friendsRV = (RecyclerView) findViewById(R.id.friendsRV);
         database = FirebaseDatabase.getInstance();
 
-        friendsCount = (TextView) findViewById(R.id.freindsCount);
+        friendsCount = (TextView) findViewById(R.id.friendsCount);
         //myAdapter = new UserAdapter(this,R.layout.friend,myFriends);
         //friends.setAdapter(myAdapter);
-        friendsCount.setText("You have " + nFriends + "friends");
         /*Friend friend = new Friend("JR8XB36F07dAuqTp2XL98vXkYOn1", "JR8XB36F07dAuqTp2XL98vXkYOn1");
 
         DatabaseReference ref = database.getReference("friends");
@@ -95,13 +94,15 @@ public class FriendsActivity extends AppCompatActivity {
 
                     myRef = database.getReference("users").child(user.getUid());
 
-                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            fID.clear();
                             fID = dataSnapshot.getValue(User.class).getFriendsUID();
-                            Log.d("SIZE F", fID.get(0) + " | " + fID.get(1));
+                            //Log.d("SIZE F", fID.get(0) + " | " + fID.get(1));
                             fID.removeAll(Collections.singleton(null));
                             fID.remove(uID);
+                            updateFriendsCount(fID.size());
 
                             LinearLayoutManager mLayoutManager = new LinearLayoutManager(FriendsActivity.this, LinearLayoutManager.VERTICAL, false);
                             FriendAdapter mAdapter = new FriendAdapter(fID, FriendsActivity.this, uID);
@@ -158,5 +159,9 @@ public class FriendsActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void updateFriendsCount(int count) {
+        friendsCount.setText("You have " + count + " friends");
     }
 }

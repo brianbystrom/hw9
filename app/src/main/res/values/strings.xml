@@ -10,9 +10,17 @@
     <string name="createTripBTN">Create new trip</string>
     <string name="sendMsgBTN">Send</string>
     <string name="reqBTN">View Friend Requets</string>
+    <string name="logoutMI">Log out</string>
+    <string name="loginLabel">Login to the Trip Application.</string>
+    <string name="signupLabel">Please provide your information below to create an account.</string>
+    <string name="editLabel">Edit your profile below.</string>
+    <string name="placeMI">Add Places</string>
+    <string name="viewMI">View Places</string>
+    <string name="tripMI">View Trip Path</string>
     <array name="gender">
         <item name="" value="">Please select one...</item>
         <item name="Male" value="Male">Male</item>
         <item name="Female" value="Female">Female</item>
     </array>
+    <string name="title_activity_maps">Map</string>
 </resources>

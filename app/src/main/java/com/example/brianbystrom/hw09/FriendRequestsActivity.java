@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,12 +45,17 @@ public class FriendRequestsActivity extends AppCompatActivity {
     private String myname;
     private ValueEventListener listener;
     private User currentUser = new User();
+    private TextView itemsTV;
+    private ProgressBar PB;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_friends);
         //find_friends = (ListView) findViewById(R.id.findFriends);
         findFriendsRV = (RecyclerView) findViewById(R.id.findFriendsRV);
+        itemsTV = (TextView) findViewById(R.id.itemsTV);
+        PB = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         if(getIntent().getExtras()!=null){
@@ -81,8 +89,12 @@ public class FriendRequestsActivity extends AppCompatActivity {
                                 Log.d("COMPARE", user.getUid() + " | " + request.getuID());
                                 if (user.getUid().equals(request.getfID())) {
                                     allRequests.add(request);
+                                    updateCount(allRequests.size());
+
                                 }
                             }
+
+                            updateCount(allRequests.size());
 
                             LinearLayoutManager mLayoutManager = new LinearLayoutManager(FriendRequestsActivity.this, LinearLayoutManager.VERTICAL, false);
                             FriendRequestsAdapter mAdapter = new FriendRequestsAdapter(allRequests, FriendRequestsActivity.this, uID);
@@ -90,6 +102,8 @@ public class FriendRequestsActivity extends AppCompatActivity {
                             findFriendsRV.setAdapter(mAdapter);
                             findFriendsRV.setLayoutManager(mLayoutManager);
                             findFriendsRV.setHasFixedSize(true);
+
+                            showItems();
 
 
                             //myRef.child("friends").orderByChild("user").equalTo(user.getUid());
@@ -161,69 +175,17 @@ public class FriendRequestsActivity extends AppCompatActivity {
         }
     }
 
-    /*public class CustomArrayAdapter extends ArrayAdapter<User>{
-        ArrayList<User> mDataset;
-        Context c;
-        TextView name;
-        Button add;
-        ImageView img;
-        FirebaseDatabase l;
-        String id;
-        CustomArrayAdapter(ArrayList<User> dataSet, Context c, FirebaseDatabase lU, String Uid){
-            super(c,R.layout.friend,dataSet);
-            mDataset = dataSet;
-            this.c = c;
-            l = lU;
-            id = Uid;
-
+    public void updateCount(int count) {
+        if(count == 0) {
+            itemsTV.setText("You have 0 pending friend requests to accept.");
+        } else {
+            itemsTV.setText("You have " + count + " pending friend requests.");
         }
+    }
 
-        @NonNull
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            LayoutInflater v =  (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = v.inflate(R.layout.friend,parent,false);
-            name = (TextView)convertView.findViewById(R.id.nameTV);
-            add = (Button) convertView.findViewById(R.id.addBtn);
-            add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //Add to arrayList
-                    l.getReference().addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            ArrayList<String> temp = new ArrayList();
-                             //temp = dataSnapshot.child("users").child(id).child("friendsUID").child(dataSnapshot.child("users").child(id).child("friendsUID")+"").getValue(ArrayList.class);
-                            for(int i = 0; i < dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount(); i++){
-                                if(dataSnapshot.child("users").child(id).child("friendsUID").child(i+"").exists()){
-                                temp.add(dataSnapshot.child("users").child(id).child("friendsUID").child(i+"").getValue(String.class));
-                                }
-                            }
-                            Log.d("zone",dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount()+"");
-                            temp.add(dataSnapshot.child("all").child(mDataset.get(position).getfName().charAt(0)+"").getValue(String.class));
-                            l.getReference().child("users").child(id).child("friendsUID").setValue(temp);
-//                            ((FindFriendsActivity) c).end();
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                }
-
-            });
-            img = (ImageView) convertView.findViewById(R.id.profileUrlIV);
-            img.setImageResource(R.drawable.norm);
-            name.setText(mDataset.get(position).getfName() +" " +mDataset.get(position).getlName());
-            add.setText("Add");
-            return convertView;
-        }
-
-        @Override
-        public int getCount() {
-            return mDataset.size();
-        }
-    }*/
+    public void showItems() {
+        PB.setVisibility(View.GONE);
+        itemsTV.setVisibility(View.VISIBLE);
+        findFriendsRV.setVisibility(View.VISIBLE);
+    }
 }
