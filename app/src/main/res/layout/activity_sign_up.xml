@@ -35,23 +35,23 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/passwordET"
         android:layout_below="@+id/emailET"
         android:layout_alignLeft="@+id/emailET"
         android:layout_alignStart="@+id/emailET"
-        android:hint="Password" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
         android:layout_below="@+id/passwordET"
         android:layout_centerHorizontal="true"
         android:id="@+id/cPasswordET"
-        android:hint="Confirm Password" />
+        android:hint="Confirm Password"
+        android:inputType="textPassword" />
 
     <Button
         android:text="@string/signUpBTN"

@@ -44,10 +44,6 @@ public class AddFriendTripAdapter extends RecyclerView.Adapter<AddFriendTripAdap
         this.activity = activity;
         this.tripID = tripID;
         database = FirebaseDatabase.getInstance();
-
-
-
-
     }
 
 
@@ -63,8 +59,6 @@ public class AddFriendTripAdapter extends RecyclerView.Adapter<AddFriendTripAdap
             //this.locationTV = (TextView) itemView.findViewById(R.id.locationTV);
             this.imageIV = (ImageView) itemView.findViewById(R.id.imageIV);
             this.addIV = (ImageView) itemView.findViewById(R.id.addIV);
-
-
         }
 
     }

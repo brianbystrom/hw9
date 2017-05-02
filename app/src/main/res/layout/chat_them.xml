@@ -47,4 +47,14 @@
         android:layout_below="@+id/userTV"
         android:layout_alignLeft="@+id/userTV"
         android:layout_alignStart="@+id/userTV" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        android:layout_alignTop="@+id/userTV"
+        android:layout_alignRight="@+id/userTV"
+        android:layout_alignEnd="@+id/userTV"
+        android:id="@+id/deleteIV"
+        android:visibility="gone" />
 </RelativeLayout>

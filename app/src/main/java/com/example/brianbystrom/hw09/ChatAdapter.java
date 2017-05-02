@@ -55,6 +55,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         public TextView msgTV;
         public TextView timeTV;
         public ImageView userIV;
+        public ImageView deleteIV;
 
 
         public ViewHolder(View itemView) {
@@ -63,6 +64,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             this.msgTV = (TextView) itemView.findViewById(R.id.msgTV);
             this.timeTV = (TextView) itemView.findViewById(R.id.timeTV);
             this.userIV = (ImageView) itemView.findViewById(R.id.userIV);
+            this.deleteIV = (ImageView) itemView.findViewById(R.id.deleteIV);
         }
 
     }
@@ -131,6 +133,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                     }
                     ImageView iv = holder.userIV;
                     Picasso.with(activity).load(msgUser.getProfileURL()).into(iv);
+
+                    ImageView iv2 = holder.deleteIV;
+
+                    iv2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mDataset.remove(position);
+
+
+
+
+                            notifyDataSetChanged();
+                        }
+                    });
 
                     //}
                 }

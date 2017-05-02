@@ -49,4 +49,13 @@
         android:layout_alignStart="@+id/timeTV"
         android:id="@+id/msgTV"
         android:layout_width="250dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        android:layout_alignTop="@+id/userTV"
+        android:layout_alignLeft="@+id/userTV"
+        android:layout_alignStart="@+id/userTV"
+        android:id="@+id/deleteIV" />
 </RelativeLayout>
