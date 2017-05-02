@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/viewMI"
+        android:id="@+id/viewMI" />
+    <item android:title="@string/placeMI"
+        android:id="@+id/placeMI" />
+    <item android:title="@string/tripMI"
+        android:id="@+id/tripMI" />
+</menu>

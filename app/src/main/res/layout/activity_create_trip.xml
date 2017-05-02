@@ -30,7 +30,7 @@
         android:layout_alignRight="@+id/titleET"
         android:layout_alignEnd="@+id/titleET"
         android:id="@+id/locationET"
-        android:hint="Location" />
+        android:hint="Location (click Map icon)" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_alignLeft="@+id/locationET"
         android:layout_alignStart="@+id/locationET"
         android:id="@+id/imageET"
-        android:hint="Loation Image URL" />
+        android:hint="Location Image URL" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -74,4 +74,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_mapmode"
+        android:layout_below="@+id/titleET"
+        android:layout_toRightOf="@+id/locationET"
+        android:layout_toEndOf="@+id/locationET"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:id="@+id/mapIV" />
 </RelativeLayout>

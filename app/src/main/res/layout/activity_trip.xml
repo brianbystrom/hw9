@@ -11,7 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.brianbystrom.hw09.TripActivity">
 
-    <TextView
+
+
+<TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,18 +66,18 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:id="@+id/addIV"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/userIV"
+        android:layout_toEndOf="@+id/userIV"
+/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:srcCompat="@color/common_google_signin_btn_text_light_disabled"
         android:id="@+id/userIV"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/sendMsgBTN"
         android:layout_alignStart="@+id/sendMsgBTN" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:id="@+id/addIV"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/userIV"
-        android:layout_toEndOf="@+id/userIV" />
 </RelativeLayout>

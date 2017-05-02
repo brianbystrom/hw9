@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.View.VISIBLE;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -52,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button createTripBTN, friendsTripBTN;
     private ArrayList<Trip> tripList = new ArrayList<Trip>();
     private int d;
+    private ProgressBar tripPB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         welcomeTV = (TextView) findViewById(R.id.welcomeTV);
         createTripBTN = (Button) findViewById(R.id.createTripBTN);
         friendsTripBTN = (Button) findViewById(R.id.friendsTripsBTN);
+        tripPB = (ProgressBar) findViewById(R.id.tripPB);
 
         tripsRV = (RecyclerView) findViewById(R.id.tripsRV);
         database = FirebaseDatabase.getInstance();
@@ -79,58 +84,38 @@ public class HomeActivity extends AppCompatActivity {
                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    updateName();
                     uid = user.getUid();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     //welcomeTV.setText("Welcome back " + user.getDisplayName());
+
                     myRef = database.getReference("users").child(user.getUid());
+
+
+
+
+
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
-//                                Log.d("demo", snapshot.getValue(User.class).toString());
-                                Log.d(TAG, snapshot.getValue(User.class).getfName());
-                                currentUser.setfName(snapshot.getValue(User.class).getfName().toString());
-                                currentUser.setlName(snapshot.getValue(User.class).getlName().toString());
-                                currentUser.setGender(snapshot.getValue(User.class).getGender().toString());
-                                currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
-                                currentUser.setFriendsUID((ArrayList<String>) snapshot.getValue(User.class).getFriendsUID());
-                                currentUser.setTripsID((ArrayList<String>) snapshot.getValue(User.class).getTripsID());
-                                welcomeTV.setText("Welcome back " + currentUser.getfName() + " " + currentUser.getlName());
-                            }
 
-                            /*userRef = database.getReference("users").child(user.getUid());
+                                for (com.google.firebase.database.DataSnapshot s : snapshot.getChildren()) {
+                                    Log.d("NUM", snapshot.getChildrenCount() + "");
 
-                            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot snapshot) {
-                                    //for (com.google.firebase.database.DataSnapshot s: snapshot.getChildren()) {
-
+                                    //                                Log.d("demo", snapshot.getValue(User.class).toString());
+                                    Log.d(TAG, snapshot.getValue(User.class).getfName());
                                     currentUser.setfName(snapshot.getValue(User.class).getfName().toString());
                                     currentUser.setlName(snapshot.getValue(User.class).getlName().toString());
                                     currentUser.setGender(snapshot.getValue(User.class).getGender().toString());
                                     currentUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
                                     currentUser.setFriendsUID((ArrayList<String>) snapshot.getValue(User.class).getFriendsUID());
                                     currentUser.setTripsID((ArrayList<String>) snapshot.getValue(User.class).getTripsID());
-                                    welcomeTV.setText("Welcome back " + user.getDisplayName());
-
-                                    //Log.d("LENGTH", currentUser.getTripsID().get(1) + "");
-
-
-
-                                    //getTrips(currentUser);
-
-                                    //}
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
+                                    updateName();
 
                                 }
 
-                            });*/
 
                             getTrips(currentUser);
-
 
                         }
 
@@ -142,6 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
+                    finish();
                 }
                 // ...
             }
@@ -172,6 +158,7 @@ public class HomeActivity extends AppCompatActivity {
         tripsRV.setAdapter(mAdapter);
         tripsRV.setLayoutManager(mLayoutManager);
         tripsRV.setHasFixedSize(true);
+        showTrips();
 
         ItemClickSupport.addTo(tripsRV).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
@@ -221,6 +208,7 @@ public class HomeActivity extends AppCompatActivity {
                             Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
                             for(DataSnapshot child: children) {
+                                Log.d("HELO","HELLO");
                                 Trip trip = child.getValue(Trip.class);
                                 if(currentUser.getTripsID().contains(trip.gettID())) {
                                     tripList.add(trip);
@@ -257,11 +245,14 @@ public class HomeActivity extends AppCompatActivity {
                         }
 
                     });
+                } else {
+
                 }
 
             }
         }
 
+        showTrips();
 
 
     }
@@ -278,6 +269,8 @@ public class HomeActivity extends AppCompatActivity {
                 i.putExtra("UID",uid);
                 startActivity(i);
                 return true;
+            case R.id.logoutMI:
+                mAuth.signOut();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -301,6 +294,16 @@ public class HomeActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void showTrips() {
+        tripPB.setVisibility(View.GONE);
+        tripsRV.setVisibility(VISIBLE);
+
+    }
+
+    public void updateName() {
+        welcomeTV.setText("Welcome back " + currentUser.getfName());
     }
 
 }

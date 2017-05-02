@@ -1,5 +1,6 @@
 package com.example.brianbystrom.hw09;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.GeoDataApi;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlacePhotoMetadata;
+import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
+import com.google.android.gms.location.places.PlacePhotoMetadataResult;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,14 +38,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class CreateTripActivity extends AppCompatActivity {
+public class CreateTripActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "DEMO";
+    private static final int PLACE_PICKER_REQUEST = 1;
     Button cancelBTN, saveBTN;
     EditText titleET, locationET, imageET;
-    ImageView imageIV;
+    ImageView imageIV, mapIV;
     String title, location, image;
     ArrayList<String> trips;
+
+    private Location loc = new Location(null, null,"INIT","INIT");
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -38,6 +56,9 @@ public class CreateTripActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private DatabaseReference userRef;
     private FirebaseUser user;
+
+    private GoogleApiClient mGoogleApiClient;
+
 
     private User currentUser = new User();
 
@@ -54,9 +75,12 @@ public class CreateTripActivity extends AppCompatActivity {
         imageET = (EditText) findViewById(R.id.imageET);
 
         imageIV = (ImageView) findViewById(R.id.userIV);
+        mapIV = (ImageView) findViewById(R.id.mapIV);
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -106,6 +130,21 @@ public class CreateTripActivity extends AppCompatActivity {
             }
         };
 
+        mapIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+
+                try {
+                    startActivityForResult(builder.build(CreateTripActivity.this), PLACE_PICKER_REQUEST);
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         imageET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -132,6 +171,8 @@ public class CreateTripActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(titleET.getText().toString().equals("") || locationET.getText().toString().equals("") || imageET.getText().toString().equals("")){
                     Toast.makeText(CreateTripActivity.this, "Please fill out all fields.", Toast.LENGTH_SHORT).show();
+                } else if(loc.getName().equals("INIT")) {
+                    Toast.makeText(CreateTripActivity.this, "Please select a location from the map.", Toast.LENGTH_SHORT).show();
                 } else {
 
                     title = titleET.getText().toString();
@@ -141,10 +182,13 @@ public class CreateTripActivity extends AppCompatActivity {
                     myRef = database.getReference("trips");
                     String key = myRef.child("trips").push().getKey();
                     ArrayList<Message> m = new ArrayList<Message>();
+                    ArrayList<Location> l = new ArrayList<Location>();
                     Message msg = new Message("INIT", "INIT", "INIT", "INIT");
+                    //Location loc = new Location("INIT", "INIT", "INIT");
                     m.add(msg);
+                    l.add(loc);
 
-                    Trip trip = new Trip(user.getUid(), title, location, image, key, m);
+                    Trip trip = new Trip(user.getUid(), title, loc, image, key, m, l);
 
 
                     myRef = database.getReference("trips").child(key);
@@ -188,5 +232,29 @@ public class CreateTripActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                //String toastMsg = String.format("Place: %s", place.getName());
+                loc.setLatitude(place.getLatLng().latitude);
+                loc.setLongitude(place.getLatLng().longitude);
+                loc.setName(place.getName().toString());
+                locationET.setText(place.getName());
+                //imageET.setText(place.getAttributions());
+
+
+
+            }
+        }}
+
+
+
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }

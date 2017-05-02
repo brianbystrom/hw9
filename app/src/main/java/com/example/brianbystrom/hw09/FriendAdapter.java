@@ -52,7 +52,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTV, locationTV;
-        public ImageView imageIV, addIV;
+        public ImageView imageIV, removeIV;
 
 
 
@@ -61,7 +61,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
             this.nameTV = (TextView) itemView.findViewById(R.id.nameTV);
             //this.locationTV = (TextView) itemView.findViewById(R.id.locationTV);
             this.imageIV = (ImageView) itemView.findViewById(R.id.imageIV);
-            //this.addIV = (ImageView) itemView.findViewById(R.id.addIV);
+            this.removeIV = (ImageView) itemView.findViewById(R.id.removeIV);
 
 
         }
@@ -72,7 +72,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.req_friend, parent, false);
+                .inflate(R.layout.friend, parent, false);
         ViewHolder vh = new ViewHolder(v);
 
         return vh;
@@ -82,15 +82,15 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final String uID = mDataset.get(position);
+        final String friend2 = mDataset.get(position);
 
-        myRef = database.getReference("users").child(uID);
+        myRef = database.getReference("users").child(friend2);
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 //for (com.google.firebase.database.DataSnapshot s : snapshot.getChildren()) {
-                Log.d("demo", snapshot.getValue(User.class).toString());
+                //Log.d("demo", snapshot.getValue(User.class).toString());
                 userList.add(snapshot.getValue(User.class));
                 //Log.d(TAG, snapshot.getValue(User.class).getfName());
                 currentUser.setfName(snapshot.getValue(User.class).getfName().toString());
@@ -108,7 +108,111 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                 tv.setText(currentUser.getfName().toString() + " " + currentUser.getlName().toString());
                 //tv2.setText(trip.getLocation().toString());
 
-                ImageView iv2 = holder.addIV;
+                ImageView iv2 = holder.removeIV;
+
+                iv2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("POS", position + "");
+
+                        final String friend = mDataset.get(position);
+                        Log.d("STRING", friend);
+                        mDataset.remove(position);
+                        //myRef.removeEventListener(listener);
+                        //Request request = new Request(uID, user.getKey());
+
+                        myRef3 = database.getReference("users").child(uID);
+
+                        Log.d("uID", uID);
+
+                        myRef3.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                //for (com.google.firebase.database.DataSnapshot s : snapshot.getChildren()) {
+                                Log.d("demo", snapshot.getValue(User.class).toString());
+                                //userList.add(snapshot.getValue(User.class));
+                                //Log.d(TAG, snapshot.getValue(User.class).getfName());
+                                loggedInUser.setfName(snapshot.getValue(User.class).getfName().toString());
+                                loggedInUser.setlName(snapshot.getValue(User.class).getlName().toString());
+                                loggedInUser.setGender(snapshot.getValue(User.class).getGender().toString());
+                                loggedInUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
+                                loggedInUser.setFriendsUID(snapshot.getValue(User.class).getFriendsUID());
+                                loggedInUser.setTripsID(snapshot.getValue(User.class).getTripsID());
+                                loggedInUser.setKey(snapshot.getValue(User.class).getKey());
+
+                                fID = loggedInUser.getFriendsUID();
+                                Log.d("STRING", loggedInUser.getfName());
+
+                                int rem = -1;
+                                for(int i = 0; i < fID.size(); i++) {
+                                    if(fID.get(i).equals(friend)) {
+                                        rem = i;
+                                    }
+                                }
+
+
+                                Log.d("DATA", friend);
+                                fID.remove(rem);
+                                loggedInUser.setFriendsUID(fID);
+                                myRef3.setValue(loggedInUser);
+
+
+                                //}
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        });
+
+                        myRef4 = database.getReference("users").child(friend);
+
+                        myRef4.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                //for (com.google.firebase.database.DataSnapshot s : snapshot.getChildren()) {
+                                Log.d("demo", snapshot.getValue(User.class).toString());
+                                userList.add(snapshot.getValue(User.class));
+                                //Log.d(TAG, snapshot.getValue(User.class).getfName());
+                                requestUser.setfName(snapshot.getValue(User.class).getfName().toString());
+                                requestUser.setlName(snapshot.getValue(User.class).getlName().toString());
+                                requestUser.setGender(snapshot.getValue(User.class).getGender().toString());
+                                requestUser.setProfileURL(snapshot.getValue(User.class).getProfileURL().toString());
+                                requestUser.setFriendsUID(snapshot.getValue(User.class).getFriendsUID());
+                                requestUser.setTripsID(snapshot.getValue(User.class).getTripsID());
+                                requestUser.setKey(snapshot.getValue(User.class).getKey());
+
+                                fID2 = requestUser.getFriendsUID();
+
+                                int rem2 = -1;
+                                for(int i = 0; i < fID2.size(); i++) {
+                                    if(fID2.get(i).equals(uID)) {
+                                        rem2 = i;
+                                    }
+                                }
+                                fID2.remove(rem2);
+                                requestUser.setFriendsUID(fID2);
+                                myRef4.setValue(requestUser);
+
+
+                                //}
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+
+                        });
+
+
+
+
+                        notifyDataSetChanged();
+                    }
+                });
 
 
                 ImageView iv = holder.imageIV;

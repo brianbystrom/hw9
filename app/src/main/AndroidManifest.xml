@@ -1,33 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brianbystrom.hw09">
+<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.example.brianbystrom.hw09">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="Trip App"
+    android:supportsRtl="true" android:theme="@style/AppTheme">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCugpY7_aJwkZXisXHSfhr6ogQi2xnVBaA" />
+
+
+    <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".SignUpActivity" android:label="Sign Up" />
+    <activity android:name=".HomeActivity" android:label="Home" />
+    <activity android:name=".EditProfileActivity" android:label="Edit Profile" />
+    <activity android:name=".FriendsActivity" android:label="Friends" />
+    <activity android:name=".FindFriendsActivity" android:label="Find Friends" />
+    <activity android:name=".FriendRequestsActivity" android:label="Pending Friend Requests" />
+    <activity android:name=".CreateTripActivity" android:label="Create a Trip" />
+    <activity android:name=".TripActivity" android:label="Trip Home">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".FriendsTripActivity" android:label="Friends Trips">
+
+    </activity>
+    <activity android:name=".PlacesActivity"></activity>
+        <activity android:name="MapsActivity">
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".FriendsActivity" />
-        <activity android:name=".FindFriendsActivity" />
-        <activity android:name=".FriendRequestsActivity" />
-        <activity android:name=".CreateTripActivity" />
-        <activity android:name=".TripActivity" />
-        <activity android:name=".FriendsTripActivity"></activity>
-    </application>
+</application>
+
 
 </manifest>
+

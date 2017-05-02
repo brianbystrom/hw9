@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="e@gmail.com"
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -25,15 +24,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="password"
         android:ems="10"
         android:layout_below="@+id/emailET"
         android:layout_alignRight="@+id/emailET"
         android:layout_alignEnd="@+id/emailET"
         android:layout_marginTop="12dp"
         android:id="@+id/passwordET"
-        android:hint="Password" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:text="@string/signInBTN"
@@ -53,4 +51,29 @@
         android:layout_alignRight="@+id/passwordET"
         android:layout_alignEnd="@+id/passwordET"
         android:id="@+id/signUpBTN" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_below="@+id/signInBTN"
+        android:layout_marginTop="21dp"
+        android:layout_alignLeft="@+id/signInBTN"
+        android:layout_alignStart="@+id/signInBTN"
+        android:layout_alignRight="@+id/signUpBTN"
+        android:layout_alignEnd="@+id/signUpBTN" />
+
+    <TextView
+        android:text="@string/loginLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/emailET"
+        android:layout_alignEnd="@+id/emailET"
+        android:layout_marginTop="18dp" />
+
 </RelativeLayout>

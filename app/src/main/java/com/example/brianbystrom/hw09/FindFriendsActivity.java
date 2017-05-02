@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,12 +53,17 @@ public class FindFriendsActivity extends AppCompatActivity {
     private String myname;
     private ValueEventListener listener;
     private User currentUser = new User();
+    private TextView itemsTV;
+    private ProgressBar PB;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_friends);
         //find_friends = (ListView) findViewById(R.id.findFriends);
         findFriendsRV = (RecyclerView) findViewById(R.id.findFriendsRV);
+        itemsTV = (TextView) findViewById(R.id.itemsTV);
+        PB = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         if(getIntent().getExtras()!=null){
@@ -103,8 +109,8 @@ public class FindFriendsActivity extends AppCompatActivity {
                                     for(DataSnapshot child: children) {
                                         Request request = child.getValue(Request.class);
                                         Log.d("COMPARE", user.getUid() + " | " + request.getuID());
-                                        if(user.getUid().equals(request.getuID())) {
-                                            allRequests.add(request.getuID());
+                                        if(user.getUid().equals(request.getuID()) || user.getUid().equals(request.getfID())) {
+                                            allRequests.add(request.getfID());
                                         }
                                     }
 
@@ -128,8 +134,12 @@ public class FindFriendsActivity extends AppCompatActivity {
                                                 User user = child.getValue(User.class);
                                                 if(!allRequests.contains(user.getKey()) && !currentUser.getFriendsUID().contains(user.getKey())) {
                                                     allUsers.add(user);
+                                                    updateCount(allRequests.size());
+
                                                 }
                                             }
+
+                                            updateCount(allUsers.size());
 
                                             LinearLayoutManager mLayoutManager = new LinearLayoutManager(FindFriendsActivity.this, LinearLayoutManager.VERTICAL, false);
                                             FindFriendsAdapter mAdapter = new FindFriendsAdapter(allUsers, FindFriendsActivity.this, uID);
@@ -137,6 +147,8 @@ public class FindFriendsActivity extends AppCompatActivity {
                                             findFriendsRV.setAdapter(mAdapter);
                                             findFriendsRV.setLayoutManager(mLayoutManager);
                                             findFriendsRV.setHasFixedSize(true);
+
+                                            showItems();
 
 
                                             //customArrayAdapter = new CustomArrayAdapter(allUsers,getApplication(),database,user.getUid());
@@ -166,38 +178,7 @@ public class FindFriendsActivity extends AppCompatActivity {
                         }
                     });
 
-            /*myRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            allUsers.clear();
-                            customArrayAdapter.notifyDataSetChanged();
-                                for(int x = 0; x < alphabet.length; x++){
-                                    //Log.d("test ",alphabet.length+"");
-                                    Log.d("test ","if "+snapshot.child("all").child(alphabet[x]+"").getKey() +" doesnt equal "+myname.charAt(0)+"");
 
-                                    if(snapshot.child("all").child(alphabet[x]+"").exists() && !snapshot.child("all").child(alphabet[x]+"").getKey().equals(myname.charAt(0)+"")) {
-                                        User u = new User();
-                                        u.setfName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("fName").getValue(String.class));
-                                        u.setlName(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("lName").getValue(String.class));
-                                        u.setGender(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("gender").getValue(String.class));
-                                        u.setProfileURL(snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"").child("profileURL").getValue(String.class));
-                                        allUsers.add(u);
-                                        Log.d("AAA",snapshot.child("users").child(snapshot.child("all").child(alphabet[x]+"").getValue()+"")+"");
-                                    }
-                                    Log.d("size of list",allUsers.size()+"");
-                                    customArrayAdapter.notifyDataSetChanged();
-
-
-                                }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-
-                    });*/
                 } else {
                     // User is signed out
                     Log.d("faail", "onAuthStateChanged:signed_out");
@@ -226,69 +207,18 @@ public class FindFriendsActivity extends AppCompatActivity {
         }
     }
 
-    /*public class CustomArrayAdapter extends ArrayAdapter<User>{
-        ArrayList<User> mDataset;
-        Context c;
-        TextView name;
-        Button add;
-        ImageView img;
-        FirebaseDatabase l;
-        String id;
-        CustomArrayAdapter(ArrayList<User> dataSet, Context c, FirebaseDatabase lU, String Uid){
-            super(c,R.layout.friend,dataSet);
-            mDataset = dataSet;
-            this.c = c;
-            l = lU;
-            id = Uid;
-
+    public void updateCount(int count) {
+        if(count == 0) {
+            itemsTV.setText("You are friends with everyone.");
+        } else {
+            itemsTV.setText("Found " + count + " friends to add.");
         }
+    }
 
-        @NonNull
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            LayoutInflater v =  (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = v.inflate(R.layout.friend,parent,false);
-            name = (TextView)convertView.findViewById(R.id.nameTV);
-            add = (Button) convertView.findViewById(R.id.addBtn);
-            add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //Add to arrayList
-                    l.getReference().addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            ArrayList<String> temp = new ArrayList();
-                             //temp = dataSnapshot.child("users").child(id).child("friendsUID").child(dataSnapshot.child("users").child(id).child("friendsUID")+"").getValue(ArrayList.class);
-                            for(int i = 0; i < dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount(); i++){
-                                if(dataSnapshot.child("users").child(id).child("friendsUID").child(i+"").exists()){
-                                temp.add(dataSnapshot.child("users").child(id).child("friendsUID").child(i+"").getValue(String.class));
-                                }
-                            }
-                            Log.d("zone",dataSnapshot.child("users").child(id).child("friendsUID").getChildrenCount()+"");
-                            temp.add(dataSnapshot.child("all").child(mDataset.get(position).getfName().charAt(0)+"").getValue(String.class));
-                            l.getReference().child("users").child(id).child("friendsUID").setValue(temp);
-//                            ((FindFriendsActivity) c).end();
-                        }
+    public void showItems() {
+        PB.setVisibility(View.GONE);
+        itemsTV.setVisibility(View.VISIBLE);
+        findFriendsRV.setVisibility(View.VISIBLE);
+    }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                }
-
-            });
-            img = (ImageView) convertView.findViewById(R.id.profileUrlIV);
-            img.setImageResource(R.drawable.norm);
-            name.setText(mDataset.get(position).getfName() +" " +mDataset.get(position).getlName());
-            add.setText("Add");
-            return convertView;
-        }
-
-        @Override
-        public int getCount() {
-            return mDataset.size();
-        }
-    }*/
 }

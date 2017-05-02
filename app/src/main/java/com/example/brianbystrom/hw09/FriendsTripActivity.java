@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -33,6 +38,9 @@ public class FriendsTripActivity extends AppCompatActivity {
     private ArrayList<Trip> tripList = new ArrayList<Trip>();
     private RecyclerView friendsTripsRV;
     private String uid;
+    private TextView itemsTV;
+    private ProgressBar PB;
+
     //final ValueEventListener listener;
 
     @Override
@@ -41,6 +49,9 @@ public class FriendsTripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends_trip);
 
         friendsTripsRV = (RecyclerView) findViewById(R.id.friendsTripsRV);
+        itemsTV = (TextView) findViewById(R.id.itemsTV);
+        PB = (ProgressBar) findViewById(R.id.progressBar);
+
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -84,8 +95,12 @@ public class FriendsTripActivity extends AppCompatActivity {
                                             if(currentUser.getFriendsUID().contains(trip.getuID()) && !currentUser.getTripsID().contains(trip.gettID())) {
                                                 tripList.add(trip);
                                                 Log.d("ADDED", "ADDED" + trip.getTitle());
+                                                updateCount(tripList.size());
+
                                             }
                                         }
+
+                                        updateCount(tripList.size());
 
                                         Log.d("USER IDIDID", uid + "");
 
@@ -95,6 +110,8 @@ public class FriendsTripActivity extends AppCompatActivity {
                                         friendsTripsRV.setAdapter(mAdapter);
                                         friendsTripsRV.setLayoutManager(mLayoutManager);
                                         friendsTripsRV.setHasFixedSize(true);
+
+                                        showItems();
                                     }
 
                                     @Override
@@ -144,5 +161,19 @@ public class FriendsTripActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void updateCount(int count) {
+        if(count == 0) {
+            itemsTV.setText("There are no trips of your friends that you are not added on.");
+        } else {
+            itemsTV.setText("Found " + count + " trips.");
+        }
+    }
+
+    public void showItems() {
+        PB.setVisibility(View.GONE);
+        itemsTV.setVisibility(View.VISIBLE);
+        friendsTripsRV.setVisibility(View.VISIBLE);
     }
 }
